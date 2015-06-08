@@ -27,7 +27,7 @@ public abstract class BasePresenter {
     private InvocationHandler handler = new InvocationHandler() {
         @Override
         public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-            Object result = null;
+            Object result;
             synchronized (this) {
                 result = method.invoke(BasePresenter.this, args);
             }

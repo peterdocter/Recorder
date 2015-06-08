@@ -14,9 +14,8 @@ public class BaseService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.i(TAG, "onCreate :" + this.hashCode());
         if (mRecorderPresenter == null) {
-            mRecorderPresenter = RecorderPresenter.getInstance();
+            mRecorderPresenter = new RecorderPresenter();
             Log.i(TAG, "create a presenter :" + mRecorderPresenter.hashCode());
         }
     }
@@ -28,19 +27,7 @@ public class BaseService extends Service {
 
     @Override
     public IBinder onBind(Intent intent) {
-        Log.i(TAG, "onbind");
         return mRecorderPresenter.getBinder();
     }
 
-    @Override
-    public boolean onUnbind(Intent intent) {
-        Log.i(TAG, "onUnbind :" + mRecorderPresenter.hashCode());
-        return super.onUnbind(intent);
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        Log.i(TAG, "onDestroy");
-    }
 }

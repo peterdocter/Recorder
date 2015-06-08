@@ -7,14 +7,6 @@ package com.letv.MVPRecorder.presenter;
 public class RecorderPresenter extends BasePresenter implements IPresenter {
 
     private int count;
-    private static RecorderPresenter sRecorderPresenter = new RecorderPresenter();
-
-    private RecorderPresenter() {
-    }
-
-    public static RecorderPresenter getInstance() {
-        return sRecorderPresenter;
-    }
 
     @Override
     public void onStartRecord() {
