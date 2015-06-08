@@ -6,9 +6,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import com.letv.MVPRecorder.R;
+import com.letv.MVPRecorder.presenter.IPresenter;
 
 
-public class MainActivity extends BaseActivity implements IView, View.OnClickListener {
+public class MainActivity extends BaseActivity<IPresenter, IView> implements IView, View.OnClickListener {
 
     private TextView tv;
     private Button btn;

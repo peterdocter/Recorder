@@ -8,20 +8,19 @@ import android.os.Bundle;
 import android.os.IBinder;
 import com.letv.MVPRecorder.BaseService;
 import com.letv.MVPRecorder.presenter.BasePresenter;
-import com.letv.MVPRecorder.presenter.IPresenter;
 
 /**
  * Created by zhangjiahao on 2015/6/7.
  */
-public abstract class BaseActivity extends Activity {
+public abstract class BaseActivity<T,K> extends Activity {
 
     private Intent intent;
-    protected IPresenter presenter;
+    protected T presenter;
 
     private ServiceConnection conn = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
-            presenter = ((BasePresenter.PresenterBinder) service).newPresenter(onCreatePresenter());
+            presenter = (T) ((BasePresenter.PresenterBinder) service).newPresenter(onCreatePresenter());
         }
 
         @Override
@@ -29,7 +28,7 @@ public abstract class BaseActivity extends Activity {
         }
     };
 
-    protected abstract IView onCreatePresenter();
+    protected abstract K onCreatePresenter();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
